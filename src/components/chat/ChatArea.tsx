@@ -102,7 +102,7 @@ export function ChatArea({ contact, messages, onBack, onResumeSync, onMessageSen
 
   const createPendingMessage = (partial: Partial<Message>): Message => ({
     id: `pending-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    account_id: account.id,
+    account_id: account!.id,
     contact_id: contact.id,
     wa_message_id: null,
     direction: "outgoing",
