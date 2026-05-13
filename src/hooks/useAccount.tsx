@@ -35,7 +35,9 @@ const KEY = "wa_current_account_id";
 export function AccountProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const [accounts, setAccounts] = useState<WaAccount[]>([]);
-  const [currentId, setCurrentIdState] = useState<string | null>(localStorage.getItem(KEY));
+  const [currentId, setCurrentIdState] = useState<string | null>(
+    typeof window !== "undefined" ? window.localStorage.getItem(KEY) : null,
+  );
   const [loading, setLoading] = useState(true);
 
   const refresh = useCallback(async () => {
